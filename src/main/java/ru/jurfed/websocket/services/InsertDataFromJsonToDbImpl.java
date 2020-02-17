@@ -22,8 +22,8 @@ import java.util.Scanner;
 @Service
 public class InsertDataFromJsonToDbImpl implements InsertDataFromJsonToDb {
 
-    @Autowired
-    private HeroRepository heroRepository;
+/*    @Autowired
+    private HeroRepository heroRepository;*/
 
     @Autowired
     private HeroesReaderConfig heroesConfig;
@@ -52,7 +52,8 @@ public class InsertDataFromJsonToDbImpl implements InsertDataFromJsonToDb {
                 }
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 Hero hero = gson.fromJson(heroData, Hero.class);
-                heroRepository.saveAndFlush(hero);
+                System.err.println("heroData");
+//                heroRepository.saveAndFlush(hero);
                 logger.info(heroFile + " Data is recorded in the database");
             }else{
                 logger.warn(heroFile + " file not found");
