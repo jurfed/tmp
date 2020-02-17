@@ -1,17 +1,13 @@
 package ru.jurfed.websocket.services;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.jurfed.websocket.ServerMainClass;
 import ru.jurfed.websocket.config.HeroesReaderConfig;
-import ru.jurfed.websocket.domain.Hero;
-import ru.jurfed.websocket.repositories.HeroRepository;
 
-import java.io.*;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -50,9 +46,9 @@ public class InsertDataFromJsonToDbImpl implements InsertDataFromJsonToDb {
                 while (scanner.hasNextLine()) {
                     heroData += scanner.nextLine();
                 }
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                Hero hero = gson.fromJson(heroData, Hero.class);
-                System.err.println("heroData");
+
+
+                System.err.println(heroData);
 //                heroRepository.saveAndFlush(hero);
                 logger.info(heroFile + " Data is recorded in the database");
             }else{
